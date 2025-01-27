@@ -7,7 +7,17 @@ const challengeSchema = new mongoose.Schema({
         trim: true,
         minlength: [5, "Title must be at least 5 characters long."],
         maxlength: [100, "Title must not exceed 100 characters."]
-    },    
+    },  
+    startDate: {
+        type: Date,
+        required: true,
+        validate: {
+            validator: function (v) {
+                return v < new Date();
+            },
+            message: (props) => `Start date must be a past date.`
+        }
+    },  
     deadLine: {
         type: Date,
         required: true,
@@ -17,7 +27,7 @@ const challengeSchema = new mongoose.Schema({
             },
             message: (props) => `Deadline must be a future date.`
         }
-    },    
+    },  
     duration: {
         type: Number,
         required: true,
@@ -54,11 +64,27 @@ const challengeSchema = new mongoose.Schema({
             message: "Project description must contain at least one item."
         }
     },
+    skillsNeeded: {
+        type: [String],
+        required: true,
+        validate: {
+            validator: function (v) {
+                return v.length > 0;
+            },
+            message: "Skills needed must contain at least one item."
+        }
+    },
     projectBrief: {
         type: String,
         required: true,
         maxlength: [60, "Project brief must not exceed 60 characters."]
     }, 
+    seniorityLevel: {
+        type: [String],
+        required: true,
+        enum: ["Junior", "Intermediate", "Senior"],
+        default: []
+    },
     tasks: {
         type: [String],
         required: true,
@@ -68,8 +94,25 @@ const challengeSchema = new mongoose.Schema({
             },
             message: "Tasks must contain at least one item."
         }
+    },
+    challengeStatus: {
+        type: String,
+        required: true,
+        enum: ["Completed", "Uncompleted","Ongoing"],
+        default: "Uncompleted"
     }
 },{timestamps: true});
+
+
+challengeSchema.pre("save", function (next) {
+    if(this.startDate && this.deadLine){
+        const start = new Date(this.startDate);
+        const end = new Date(this.deadLine);   
+        const diff = end - start;
+        this.duration = Math.ceil(diff / (1000 * 3600 * 24));   
+    }
+    next();
+})
 
 const Challenge = mongoose.model("Challenge", challengeSchema);
 
