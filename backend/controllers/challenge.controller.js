@@ -1,5 +1,6 @@
 import express from "express";
 import Challenge from "../models/challenge.model.js";
+import { challengeValidator } from "../validators/challenge.validator.js";
 
 const challengeRouter = express.Router();
 
@@ -25,6 +26,10 @@ challengeRouter.get("/:id", async (req, res) => {
 });
 
 challengeRouter.post("/", async (req, res) => {
+  const {error } = challengeValidator.createChallenge.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
   try {
     const {
       title,
@@ -37,30 +42,13 @@ challengeRouter.post("/", async (req, res) => {
       projectBrief,
       seniorityLevel,
       tasks,
-      challengeStatus,
+      challengeStatus
     } = req.body;
 
-    // Ensure startDate is a valid past date
-    const parsedStartDate = new Date(startDate);
-    if (parsedStartDate >= new Date()) {
-      return res.status(400).json({ message: "Start date must be a past date." });
-    }
-
-    // Ensure deadLine is a valid future date
-    const parsedDeadLine = new Date(deadLine);
-    if (parsedDeadLine <= new Date()) {
-      return res.status(400).json({ message: "Deadline must be a future date." });
-    }
-
-    // Calculate the duration in days
-    const duration = Math.ceil((parsedDeadLine - parsedStartDate) / (1000 * 60 * 60 * 24));
-
-    // Create the new challenge
     const newChallenge = new Challenge({
       title,
-      startDate: parsedStartDate,
-      deadLine: parsedDeadLine,
-      duration,
+      startDate,
+      deadLine,
       moneyPrize,
       email,
       projectDescription,
@@ -68,7 +56,7 @@ challengeRouter.post("/", async (req, res) => {
       projectBrief,
       seniorityLevel,
       tasks,
-      challengeStatus,
+      challengeStatus
     });
 
     const createdChallenge = await newChallenge.save();
@@ -79,8 +67,11 @@ challengeRouter.post("/", async (req, res) => {
   }
 });
 
-
 challengeRouter.put("/:id", async (req, res) => {
+  const { error } = challengeValidator.updateChallenge.validate(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
   try {
     const challenge = await Challenge.findById(req.params.id);
     if (!challenge) {
