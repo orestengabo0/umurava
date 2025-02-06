@@ -29,17 +29,17 @@ const DashNav: React.FC = () => {
 
       <div onClick={() => handleNavigation("home", "/")} className={` flex flex-row items-center gap-3 py-2 px-3 w-[100%] rounded-md cursor-pointer ${ tab === "dashboard" ? " bg-[#FFFFFF] " : ""}`} >
         <img src={ tab === "dashboard" ? homIcon : home } className=" h-5 w-5 "/>
-        <span className={ ` font-workSans text-white text-sm ${ tab === "dashboard" ? "text-[#2B71F0]" : " text-white"}`}>Dashboard</span>
+        <span className={ ` font-workSans text-sm ${ tab === "dashboard" ? "text-[#2B71F0]" : " text-white"}`}>Dashboard</span>
       </div>
 
       <div onClick={() => handleNavigation("challenge", "/challenge")} className={` flex flex-row items-center gap-3 py-2 px-3 w-[100%] rounded-md cursor-pointer ${ tab === "challenge" ? " bg-[#FFFFFF] " : ""}`}  >
         <img src={tab === "challenge" ? challenge : chalIcon} className=" h-5 w-5 " />
-        <span className={ ` font-workSans text-white text-sm ${ tab === "challenge" ? "text-[#2B71F0]" : " text-white"}`}>Challenges & Hackathons</span>
+        <span className={ ` font-workSans text-sm ${ tab === "challenge" ? "text-[#2B71F0]" : " text-white"}`}>Challenges & Hackathons</span>
       </div>
 
       <div onClick={() => handleNavigation("community", "/community")} className={` flex flex-row items-center gap-3 py-2 px-3 w-[100%] rounded-md cursor-pointer ${ tab === "community" ? " bg-[#FFFFFF] " : ""}`}  >
         <img src={tab === "community" ? community : comIcon } className=" h-5 w-5 "/>
-        <span className={ ` font-workSans text-white text-sm ${ tab === "community" ? "text-[#2B71F0]" : " text-white"}`}>Community</span>
+        <span className={ ` font-workSans text-sm ${ tab === "community" ? "text-[#2B71F0]" : " text-white"}`}>Community</span>
       </div>
 
     </div>
