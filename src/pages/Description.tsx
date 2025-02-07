@@ -10,9 +10,7 @@ const Description: React.FC = () => {
           <TextCard />
         </div>
         <div></div>
-        <div className=" flex flex-col px-5 gap-8 py-8">
-          
-        </div>
+        <div className=" flex flex-col px-5 gap-8 py-8"></div>
       </div>
     </Dashboard>
   );

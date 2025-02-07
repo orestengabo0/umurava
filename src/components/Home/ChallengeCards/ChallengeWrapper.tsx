@@ -12,7 +12,14 @@ const ChallengeWrapper: React.FC = () => {
   return (
     <div className=" flex flex-row gap-4">
       {challenges.map((challenge: challenge, index: number) => {
-        return <ChallengeCard key={index} id={challenge.id} title={challenge.title} timeline={challenge.timeline}/>;
+        return (
+          <ChallengeCard
+            key={index}
+            id={challenge.id}
+            title={challenge.title}
+            timeline={challenge.timeline}
+          />
+        );
       })}
     </div>
   );

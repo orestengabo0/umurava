@@ -1,7 +1,7 @@
 import React from "react";
 import search from "../../../assets/Navbar/Search.svg";
 import notification from "../../../assets/Navbar/Notification.svg";
-import profile from "../../../assets/Navbar/Profile.png"
+import profile from "../../../assets/Navbar/Profile.png";
 
 const Navbar: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
           <img src={notification} />
         </div>
         <div>
-            <img src={profile} className=" h-9 w-9"/>
+          <img src={profile} className=" h-9 w-9" />
         </div>
       </div>
     </div>

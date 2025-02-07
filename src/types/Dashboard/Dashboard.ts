@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 interface DashRightProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 export default DashRightProps;
