@@ -1,13 +1,16 @@
 import React from "react";
 import umuLogo from "../../../assets/Home/Logo.svg"
+import { useNavigate } from "react-router-dom";
 
 
 interface ChallengeCardProps {
+  id: number,
   title: string;
   timeline: string;
 }
 
-const ChallengeCard: React.FC<ChallengeCardProps> = ({ title, timeline }) => {
+const ChallengeCard: React.FC<ChallengeCardProps> = ({ id ,title, timeline }) => {
+  const navigate = useNavigate();
   return (
     <div className=" flex flex-col bg-[#FFFFFF] border-[#E4E7EC] border-[1.5px] rounded-lg py-3 px-3 gap-8 ">
       <div className=" relative">
@@ -33,7 +36,7 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ title, timeline }) => {
           </div>
         </div>
         <div>
-            <button className=" text-sm font-workSans text-white bg-[#2B71F0] px-2 py-2 rounded-md">View Internships</button>
+            <button className=" text-sm font-workSans text-white bg-[#2B71F0] px-2 py-2 rounded-md" onClick={() => navigate(`/description/${id}`)}>View Internships</button>
         </div>
       </div>
     </div>

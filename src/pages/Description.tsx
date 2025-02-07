@@ -1,12 +1,12 @@
 import React from "react";
 import Dashboard from "../layout/Dashboard";
-import TextCard from "../components/Home/TextCard/TextCard";
+import TextCard from "../components/Common/Description/TextCard/TextCard";
 
 const Description: React.FC = () => {
   return (
     <Dashboard>
       <div>
-        <div className=" flex flex-row items-center px-5 ">
+        <div className=" flex flex-row items-center">
           <TextCard />
         </div>
         <div></div>

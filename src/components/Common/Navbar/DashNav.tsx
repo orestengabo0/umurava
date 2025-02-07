@@ -17,6 +17,7 @@ const DashNav: React.FC = () => {
     if (currentPathName === "/") setTab("dashboard");
     else if (currentPathName.startsWith("/challenge")) setTab("challenge");
     else if (currentPathName.startsWith("/community")) setTab("community");
+    else if (currentPathName.startsWith("/description")) setTab("challenge");
   }, [location.pathname]);
 
   const handleNavigation = (tab: string, route: string) => {
