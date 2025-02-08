@@ -4,7 +4,7 @@ import Document from "../../../assets/Home/Document.svg";
 
 const StatsCard: React.FC<StatsProp> = ({ title, stats }) => {
   return (
-    <div className=" flex flex-row gap-[5.5rem] border-[#E4E7EC] border-[1.5px] bg-[#FFFFFF] px-3 py-[1.35rem] rounded-lg">
+    <div className=" flex flex-row gap-[5.5rem] border-[#E4E7EC] border-[1.5px] bg-[#FFFFFF] px-3 py-[1.35rem] rounded-lg justify-between ">
       <div className=" flex flex-row items-center gap-2">
         <div className=" bg-[#2B71F0] h-10 w-1 rounded-xl " />
         <div>

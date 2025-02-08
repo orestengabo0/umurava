@@ -6,7 +6,7 @@ const ProjDetails: React.FC = () => {
       <div className=" font-workSans font-semibold">
         Project Brief : Payroll and HR Management System
       </div>
-      <div className=" font-workSans text-sm ">
+      <div className=" font-workSans text-[0.83rem] ">
         A Fintech company that is developing a Digital Financial Platform designed <br/>
         for businesses and their workforce in Africa is partnering with Umurava to <br/>
         run a Skills Challenge for Product Design. This Fintech Company offers <br />
