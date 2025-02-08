@@ -10,7 +10,7 @@ type challenge = {
 
 const ChallengeWrapper: React.FC = () => {
   return (
-    <div className=" flex flex-row gap-4">
+    <div className=" flex flex-col md:flex-row gap-4">
       {challenges.map((challenge: challenge, index: number) => {
         return (
           <ChallengeCard

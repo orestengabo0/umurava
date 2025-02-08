@@ -14,7 +14,7 @@ const Home: React.FC = () => {
           <ViewProfile />
         </div>
 
-        <div className=" flex flex-row gap-5 px-5 w-[100%]">
+        <div className=" flex flex-col md:flex-row gap-5 px-5 w-[100%]">
           <StatsCard title="Completed Challenges" stats="05" />
           <StatsCard title="Open Challenges" stats="200" />
           <StatsCard title="Ongoing Challenges" stats="200" />
